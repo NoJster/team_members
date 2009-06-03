@@ -1,0 +1,45 @@
+%h1= @team_member.new_record? ? 'New Team Member' : 'Edit Team Member'
+
+- form_for [:admin,@team_member], :html => { :multipart => true } do |f|
+  .form-area
+    %p.title
+      %label First Name
+      = f.text_field :first_name, :class => 'textbox'
+    %p.title
+      %label Last Name
+      = f.text_field :last_name, :class => 'textbox'
+    %p.title
+      %label Birthday
+      = f.date_select :birthday, :start_year => 1975
+    %p.title
+      %label Number
+      = f.text_field :number, :class => 'textbox'
+    %p.title
+      %label Position ( 1 = Attack, 2 = Middie, 3 = Defense, 4 = Goalie )
+      = f.text_field :position_id, :class => 'textbox'
+    %p.title
+      %label Matches Played
+      = f.text_field :matches_played, :class => 'textbox'
+    %p.title
+      %label Goals
+      = f.text_field :goals, :class => 'textbox'
+    %p.title 
+      %label Picture
+      = f.file_field :picture_file
+      %img{ :src => "/images/team_memberz/" + @team_member.picture_file, :width => "100" }
+    %p.title
+      %label Phone
+      = f.text_field :phone, :class => 'textbox'
+    %p.title
+      %label E-Mail
+      = f.text_field :email, :class => 'textbox'
+    %p.title
+      %label ICQ
+      = f.text_field :icq
+
+  %p.buttons
+    - button_text = @team_member.new_record? ? 'Create' : 'Save changes'
+    = submit_tag button_text, :class => 'button'
+    or
+    = link_to 'Cancel', admin_team_members_url
+

@@ -1,0 +1,24 @@
+%h1 Team Members        
+
+%table#team_members.index{:summary => "Listing Team Members"}
+  %thead
+    %tr
+      %th.name Name
+      %th.name Number
+      %th.modify Modify
+    %tbody
+      - if @team_memberz.empty? 
+        %tr
+          %td.note{:colspan => 2} No Team Members
+      - else
+        - @team_memberz.each do |tm|
+          %tr.node.level-1{:id => "team_member-#{tm.id}"}
+            %td.page
+              %spawn.w1
+                = link_to "#{tm.first_name}, #{tm.last_name}", edit_admin_team_member_url( tm )
+
+            %td.number= tm.number
+            %td.remove
+              = link_to( "#{image('minus.png')} Remove", admin_team_member_url( tm ), :method => :delete, :alt => 'remove team member', :confirm => 'Are you sure? This will delete the team member!')
+ 
+%p.new= link_to( 'New Team Member', new_admin_team_member_url )        
