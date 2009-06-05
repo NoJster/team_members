@@ -24,7 +24,7 @@ describe TeamMember do
 		it "should require a number" do 
 			@team_member.number = nil
 			@team_member.should_not be_valid
-			@team_member.errors.on( :number ).should == "can't be blank"
+			@team_member.errors.on( :number ).should == [ "can't be blank", "is the wrong length (should be 2 characters)" ]
 		end
 
 		it "should require a unique number" do
@@ -35,14 +35,21 @@ describe TeamMember do
 		end
 
 		it "should get a dummy picture set if none uploaded" do
+			@team_member.picture_file = nil
 			@team_member.save
 			@team_member.picture_file.should == "dummy.png"
 		end
 
-		it "should require a picture" do
-			@team_member.picture_file = nil
+		it "should require a length of 2 for a number" do
+			@team_member.number = "1"
 			@team_member.should_not be_valid
-			@team_member.errors.on( :picture_file ).should == "can't be blank"
+			@team_member.errors.on( :number ).should == "is the wrong length (should be 2 characters)"
+		end
+
+		it "should require position_id to be one of 1,2,3,4" do
+			@team_member.position_id = 0
+			@team_member.should_not be_valid
+			@team_member.errors.on( :position_id ).should == "is not included in the list"
 		end
 	end
 
@@ -55,7 +62,8 @@ describe TeamMember do
 			:birthday => '17/10/1981',
 			:number => '03',
 			:matches_played => '5',
-			:goals => '2'
+			:goals => '2',
+			:position_id => 1
 		}
 	end
 end

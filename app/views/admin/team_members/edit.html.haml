@@ -24,9 +24,9 @@
       %label Goals
       = f.text_field :goals, :class => 'textbox'
     %p.title 
-      %label Picture
-      = f.file_field :picture_file
+      %label Picture ( leave empty to keep current picture )
       %img{ :src => "/images/team_memberz/" + @team_member.picture_file, :width => "100" }
+      = f.file_field :picture_file, :class => 'textbox'
     %p.title
       %label Phone
       = f.text_field :phone, :class => 'textbox'
@@ -35,7 +35,7 @@
       = f.text_field :email, :class => 'textbox'
     %p.title
       %label ICQ
-      = f.text_field :icq
+      = f.text_field :icq, :class => 'textbox'
 
   %p.buttons
     - button_text = @team_member.new_record? ? 'Create' : 'Save changes'

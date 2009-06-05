@@ -1,3 +1,12 @@
+- content_for 'page_css' do 
+  :sass
+    p.new
+      a
+        color: #000
+        border: 1px solid #ddf
+        padding: 6px
+        text-decoration: none
+
 %h1 Team Members        
 
 %table#team_members.index{:summary => "Listing Team Members"}
@@ -15,7 +24,7 @@
           %tr.node.level-1{:id => "team_member-#{tm.id}"}
             %td.page
               %spawn.w1
-                = link_to "#{tm.first_name}, #{tm.last_name}", edit_admin_team_member_url( tm )
+                = link_to "#{tm.first_name} #{tm.last_name}", edit_admin_team_member_url( tm )
 
             %td.number= tm.number
             %td.remove

@@ -1,5 +1,4 @@
 class Admin::TeamMembersController < ApplicationController
-
 	def index
 		@team_memberz = TeamMember.find( :all )
 	end
@@ -43,5 +42,11 @@ class Admin::TeamMembersController < ApplicationController
 		@team_member.destroy
 		flash[ :warning ] = "Team Member deleted."
 		redirect_to admin_team_members_path
+	end
+
+	def delete_picture
+		@team_member = TeamMember.find( params[ :id ] )
+
+		@team_member.update_attributes( { :picture_file => "dummy.png" } )
 	end
 end
