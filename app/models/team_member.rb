@@ -28,7 +28,12 @@ class TeamMember < ActiveRecord::Base
 		#
 		# if a new file is uploaded, use it
 		#
-		if self[ 'picture_file'].class == ActionController::UploadedStringIO
+		logger.info self[ 'picture_file' ].class
+		if self[ 'picture_file' ].class == ActionController::UploadedStringIO ||
+			self[ 'picture_file' ].class == ActionController::UploadedTempfile
+			logger.info "*****"
+			logger.info self[ 'picture_file' ].original_filename
+			logger.info "*****"
 			set_picture
 		else
 			#
