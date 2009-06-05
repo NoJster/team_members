@@ -1,6 +1,20 @@
 class Admin::TeamMembersController < ApplicationController
 	def index
-		@team_memberz = TeamMember.find( :all )
+		unless params[ :order ].nil?
+			if params[ :order ] == "name_desc"
+				@team_memberz = TeamMember.find( :all, :order => "last_name DESC" )
+			elsif params[ :order ] == "name_asc"
+				@team_memberz = TeamMember.find( :all, :order => "last_name ASC" )
+			elsif params[ :order ] == "number_desc"
+				@team_memberz = TeamMember.find( :all, :order => "number DESC" )
+			elsif params[ :order ] == "number_asc"
+				@team_memberz = TeamMember.find( :all, :order => "number ASC" )
+			else
+				@team_memberz = TeamMember.find( :all, :order => "number ASC" )
+			end
+		else
+			@team_memberz = TeamMember.find( :all, :order => "number ASC" )
+		end
 	end
 
 	def new

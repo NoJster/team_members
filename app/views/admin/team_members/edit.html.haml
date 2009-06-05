@@ -23,6 +23,9 @@
     %p.title
       %label Goals
       = f.text_field :goals, :class => 'textbox'
+    %p.title
+      %label MVP elections
+      = f.text_field :mvp, :class => 'textbox'
     %p.title 
       %label Picture ( leave empty to keep current picture )
       %img{ :src => "/images/team_memberz/" + @team_member.picture_file, :width => "100" }

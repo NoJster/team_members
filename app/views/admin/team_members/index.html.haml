@@ -12,8 +12,20 @@
 %table#team_members.index{:summary => "Listing Team Members"}
   %thead
     %tr
-      %th.name Name
-      %th.name Number
+      %th.name 
+        - if params[ :order ] == "name_desc"
+          = link_to 'Name', '?order=name_asc'
+        - elsif params[ :order ] == "name_asc"
+          = link_to 'Name', '?order=name_desc'
+        - else
+          = link_to 'Name', '?order=name_asc'
+      %th.name 
+        - if params[ :order ] == "number_desc"
+          = link_to 'Number', '?order=number_asc'
+        - elsif params[ :order ] == "number_asc"
+          = link_to 'Number', '?order=number_desc'
+        - else
+          = link_to 'Number', '?order=number_asc'
       %th.modify Modify
     %tbody
       - if @team_memberz.empty? 
