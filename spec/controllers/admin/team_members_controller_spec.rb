@@ -114,6 +114,8 @@ describe Admin::TeamMembersController do
 																								:picture_file => 'dummy.png',
 																							 	:phone => '01234234',
 																							 	:email => 'bla@bla.de',
-																							 	:icq => '1231212312' ) )
+																							 	:icq => '1231212312',
+																								:forum_nick => 'Test0r',
+																								:mvp => 0	) )
 	end
 end
