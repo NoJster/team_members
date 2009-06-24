@@ -14,7 +14,7 @@ class TeamMembersExtension < Radiant::Extension
   
   def activate
     admin.tabs.add "Team Members", "/admin/team_members", :after => "Layouts", :visibility => [:all]
-	 Page.send :include, TeamMembers
+	 Page.send :include, TeamMemberTags
   end
   
   def deactivate

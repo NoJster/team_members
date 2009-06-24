@@ -25,8 +25,8 @@
         - elsif params[ :order ] == "number_asc"
           = link_to 'Number', '?order=number_desc'
         - else
-          = link_to 'Number', '?order=number_asc'
-      %th.modify Modify
+          = link_to 'Number', '?order=number_desc'
+      %th.modify Delete 
     %tbody
       - if @team_memberz.empty? 
         %tr

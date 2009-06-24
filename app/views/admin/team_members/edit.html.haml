@@ -28,8 +28,11 @@
       = f.text_field :mvp, :class => 'textbox'
     %p.title 
       %label Picture ( leave empty to keep current picture )
-      %img{ :src => "/images/team_memberz/" + @team_member.picture_file, :width => "100" }
+      %img{ :src => "/images/playerz/" + @team_member.picture_file, :width => "100" }
       = f.file_field :picture_file, :class => 'textbox'
+    %p.title
+      %label ForumName
+      = f.text_field :forum_nick, :class => 'textbox'
     %p.title
       %label Phone
       = f.text_field :phone, :class => 'textbox'

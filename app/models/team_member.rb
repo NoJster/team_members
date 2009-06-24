@@ -28,12 +28,8 @@ class TeamMember < ActiveRecord::Base
 		#
 		# if a new file is uploaded, use it
 		#
-		logger.info self[ 'picture_file' ].class
 		if self[ 'picture_file' ].class == ActionController::UploadedStringIO ||
 			self[ 'picture_file' ].class == ActionController::UploadedTempfile
-			logger.info "*****"
-			logger.info self[ 'picture_file' ].original_filename
-			logger.info "*****"
 			set_picture
 		else
 			#
@@ -52,7 +48,7 @@ class TeamMember < ActiveRecord::Base
 		# delete the uploaded picture along with the team member
 		#
 
-		my_pic = "#{RAILS_ROOT}/public/images/team_memberz/" + self.picture_file
+		my_pic = "#{RAILS_ROOT}/public/images/playerz/" + self.picture_file
 		if !File.exists?( my_pic )
 			File.delete( my_pic )
 		end
@@ -61,7 +57,7 @@ class TeamMember < ActiveRecord::Base
 	private 
 	def set_picture
 		file_name = self[ 'picture_file' ].original_filename
-		dir = "#{RAILS_ROOT}/public/images/team_memberz/"
+		dir = "#{RAILS_ROOT}/public/images/playerz/"
 
 		if !File.exists?( File.dirname( dir + file_name ) )
 			Dir.mkdir( File.dirname( dir + file_name ) )
