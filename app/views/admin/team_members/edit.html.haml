@@ -15,8 +15,11 @@
       %label Number
       = f.text_field :number, :class => 'textbox'
     %p.title
-      %label Position ( 1 = Attack, 2 = Middie, 3 = Defense, 4 = Goalie )
+      %label Position ( 0 = Goalie, 1 = Attack, 2 = Middie, 3 = Defense )
       = f.text_field :position_id, :class => 'textbox'
+    %p.title
+      %label Plays LAX since
+      = f.date_select :plays_since, :start_year => 2000
     %p.title
       %label Matches Played
       = f.text_field :matches_played, :class => 'textbox'
@@ -42,6 +45,9 @@
     %p.title
       %label ICQ
       = f.text_field :icq, :class => 'textbox'
+    %p.title
+      %label Skype
+      = f.text_field :skype, :class => 'textbox'
 
   %p.buttons
     - button_text = @team_member.new_record? ? 'Create' : 'Save changes'

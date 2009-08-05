@@ -46,8 +46,8 @@ describe TeamMember do
 			@team_member.errors.on( :number ).should == "is the wrong length (should be 2 characters)"
 		end
 
-		it "should require position_id to be one of 1,2,3,4" do
-			@team_member.position_id = 0
+		it "should require position_id to be one of 0,1,2,3" do
+			@team_member.position_id = 4
 			@team_member.should_not be_valid
 			@team_member.errors.on( :position_id ).should == "is not included in the list"
 		end
@@ -63,7 +63,8 @@ describe TeamMember do
 			:number => '03',
 			:matches_played => '5',
 			:goals => '2',
-			:position_id => 1
+			:position_id => 1,
+			:plays_since => '17/10/2006'
 		}
 	end
 end

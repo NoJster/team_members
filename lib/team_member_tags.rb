@@ -22,6 +22,8 @@ module TeamMemberTags
 
 			pos = ""
 			case member.position_id
+			when 0
+				pos = "Goalie"
 			when 1
 				pos = "Attack"
 			when 2
@@ -29,46 +31,40 @@ module TeamMemberTags
 			when 3
 				pos = "Defense"
 			end
+			
+			plays_since = member.plays_since.nil? ? "" : member.plays_since.to_formatted_s( :month_and_year )
 
 			result += %{
 			<p>
 			<table style="width: 80%">
 			<tr>
-				<td rowspan="6" class="team_members" style="width: 40%">
+				<td rowspan="7" class="team_members" style="width: 40%">
 					<img src="/images/playerz/#{member.picture_file}" style="width: 100%"/>
 				</td>
 				<td class="team_members" style="width: 60%">
 					<b>Name:</b> #{member.first_name} #{member.last_name}
 				</td>
 			</tr>
-			<tr>
-				<td colspan=2 class="team_members">
-					<b>Number:</b> #{member.number}
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2 class="team_members">
-					<b>Position:</b> #{pos}
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2 class="team_members">
-					<b>Matches played:</b> #{member.matches_played}
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2 class="team_members">
-					<b>Goals:</b> #{member.goals}
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2 class="team_members">
-					<b>MVP elections:</b> #{member.mvp}
-				</td>
-			</tr>
-		</table>
-		</p>
-		}
+			}
+
+			[ [ "Number", member.number ],
+				[ "Position", pos ],
+				[ "Plays lacrosse since", plays_since ],
+				[ "Matches played", member.matches_played ],
+				[ "Goals", member.goals ],
+				[ "MVP elections", member.mvp ] ].each do |row|
+				result += %{<tr>
+					<td colspan=2 class="team_members">
+						<b>#{row[ 0 ]}:</b> #{row[ 1 ]}
+					</td>
+				</tr>
+				}
+			end
+
+			result += %{
+				</table>
+				</p>
+			}
 		end
 
 		result

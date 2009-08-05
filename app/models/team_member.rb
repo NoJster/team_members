@@ -11,7 +11,7 @@ class TeamMember < ActiveRecord::Base
 
 	validates_length_of :number, :is => 2 
 
-	validates_inclusion_of :position_id, :in => 1..4
+	validates_inclusion_of :position_id, :in => 0..3
 
 	def initialize( attributes = {} )
 		super( attributes )

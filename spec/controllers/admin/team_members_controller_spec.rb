@@ -116,6 +116,8 @@ describe Admin::TeamMembersController do
 																							 	:email => 'bla@bla.de',
 																							 	:icq => '1231212312',
 																								:forum_nick => 'Test0r',
+																								:skype => 'blabla',
+																								:plays_since => Date.new( 2000, 1, 1 ),
 																								:mvp => 0	) )
 	end
 end
