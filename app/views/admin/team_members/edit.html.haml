@@ -48,6 +48,9 @@
     %p.title
       %label Skype
       = f.text_field :skype, :class => 'textbox'
+    %p.title
+      %label Active?
+      = f.check_box :is_active
 
   %p.buttons
     - button_text = @team_member.new_record? ? 'Create' : 'Save changes'

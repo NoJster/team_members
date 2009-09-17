@@ -26,6 +26,8 @@
           = link_to 'Number', '?order=number_desc'
         - else
           = link_to 'Number', '?order=number_desc'
+      %th.name
+        = 'Active'
       %th.modify Delete 
     %tbody
       - if @team_memberz.empty? 
@@ -39,6 +41,7 @@
                 = link_to "#{tm.first_name} #{tm.last_name}", edit_admin_team_member_url( tm )
 
             %td.number= tm.number
+            %td.active= tm.is_active
             %td.remove
               = link_to( "#{image('minus.png')} Remove", admin_team_member_url( tm ), :method => :delete, :alt => 'remove team member', :confirm => 'Are you sure? This will delete the team member!')
  

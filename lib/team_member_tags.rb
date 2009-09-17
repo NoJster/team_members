@@ -18,7 +18,7 @@ module TeamMemberTags
 	tag "team" do |tag|
 		result = ""
 
-		TeamMember.find( :all, :order => 'position_id ASC' ).each do |member|
+		TeamMember.all( :conditions => [ "is_active = ?", true ] , :order => 'position_id ASC' ).each do |member|
 
 			pos = ""
 			case member.position_id
