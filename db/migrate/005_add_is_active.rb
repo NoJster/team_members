@@ -4,6 +4,6 @@ class AddIsActive < ActiveRecord::Migration
 	end
 
 	def self.down
-		remove_coumn :team_members, :is_active
+		remove_column :team_members, :is_active
 	end
 end

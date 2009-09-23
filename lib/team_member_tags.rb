@@ -47,12 +47,11 @@ module TeamMemberTags
 			</tr>
 			}
 
-			[ [ "Number", member.number ],
+			[ [ "Nummer", member.number ],
 				[ "Position", pos ],
-				[ "Plays lacrosse since", plays_since ],
-				[ "Matches played", member.matches_played ],
-				[ "Goals", member.goals ],
-				[ "MVP elections", member.mvp ] ].each do |row|
+				[ "Lacrosse seit", plays_since ],
+				[ "Spiele", member.matches_played ],
+		 		[ "Bemerkungen", member.notes ]	].each do |row|
 				result += %{<tr>
 					<td colspan=2 class="team_members">
 						<b>#{row[ 0 ]}:</b> #{row[ 1 ]}

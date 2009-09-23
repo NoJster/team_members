@@ -4,8 +4,9 @@ class TeamMember < ActiveRecord::Base
 	validates_presence_of :number
 
 	validates_uniqueness_of :number, :if => Proc.new { |tm| 
+		!TeamMember.find( :first, :conditions => [ 'number = ?', tm.number ] ).nil? &&
 		TeamMember.find( :first, :conditions => [ 'number = ?', tm.number ] ).is_active == true &&
-		TeamMember.find( tm.id ).is_active == true 
+		tm.is_active == true 
 	}
 	validates_uniqueness_of :icq, :allow_blank => true
 	validates_uniqueness_of :phone, :allow_blank => true
